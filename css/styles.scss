@@ -1,0 +1,63 @@
+$lg-black: #00000069;
+$lg-orange: #fff1d9c2;
+$transparent: #00000000;
+$orange: #ffc600;
+
+@mixin box($topPad, $leftPad){
+  padding: $topPad $leftPad $topPad $leftPad;
+  border: 2px solid black;
+}
+
+body{
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: sans-serif;
+}
+.jumbotron{
+  background-color: $transparent;
+  padding-bottom: 20px;
+}
+.row-header{
+  text-align: center;
+  h1{
+    font-size: 70px;
+    font-family: 'Monoton', cursive;
+    font-weight: bold;
+    color: floralwhite;
+  }
+}
+.row{
+    margin-right: 0px;
+}
+.drum{
+  margin-top: 100px;
+  border-radius: 5px;
+  @include box(30px, 20px);
+  background-color: $lg-black;
+
+  .btn{
+    margin: 10px 10px 10px 10px;
+    @include box(10px, 0px);
+    text-shadow: 0 0 .5rem black;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: $lg-orange;
+    transition: all .07s ease;
+  }
+  .btn:focus{
+    border: 2px solid orange;
+    box-shadow: 0 0 .6rem orange;
+    transform: scale(1.1);
+  }
+  .btn-light{
+    background-color: $lg-orange;
+  }
+}
+.key-name{
+  font-size: 15px;
+  letter-spacing: .1rem;
+  color: $orange;
+}
