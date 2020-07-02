@@ -2,48 +2,39 @@ document.addEventListener("keydown", function(){
   document.querySelector('.rippleBackground').classList.add("ripple");
   setTimeout(function(){document.querySelector('.rippleBackground').classList.remove("ripple");}, 1000);
   if(event.keyCode === 65){
-    var audio = new Audio('sounds/clap.wav');
-    audio.play();
+    clap();
     document.getElementById("a").focus();
   }
   if(event.keyCode === 83){
-    var audio = new Audio('sounds/hihat.wav');
-    audio.play();
+    hihat();
     document.getElementById("s").focus();
   }
   if(event.keyCode === 68){
-    var audio = new Audio('sounds/kick.wav');
-    audio.play();
+    kick()
     document.getElementById("d").focus();
   }
   if(event.keyCode === 70){
-    var audio = new Audio('sounds/openhat.wav');
-    audio.play();
+    openhat();
     document.getElementById("f").focus();
   }
   if(event.keyCode === 71){
-    var audio = new Audio('sounds/boom.wav');
-    audio.play();
+    boom();
     document.getElementById("g").focus();
   }
   if(event.keyCode === 72){
-    var audio = new Audio('sounds/ride.wav');
-    audio.play();
+    ride();
     document.getElementById("h").focus();
   }
   if(event.keyCode === 74){
-    var audio = new Audio('sounds/snare.wav');
-    audio.play();
+    snare();
     document.getElementById("j").focus();
   }
   if(event.keyCode === 75){
-    var audio = new Audio('sounds/tom.wav');
-    audio.play();
+    tom();
     document.getElementById("k").focus();
   }
   if(event.keyCode === 76){
-    var audio = new Audio("sounds/tink.wav");
-    audio.play();
+    tink();
     document.getElementById("l").focus();
   }
 });
@@ -78,6 +69,42 @@ document.addEventListener("keyup", function(){
   }
 });
 
+function boom(){
+  var audio = new Audio('sounds/boom.wav');
+  audio.play();
+}
+function clap(){
+  var audio = new Audio('sounds/clap.wav');
+  audio.play();
+}
+function hihat(){
+  var audio = new Audio('sounds/hihat.wav');
+  audio.play();
+}
+function kick(){
+  var audio = new Audio('sounds/kick.wav');
+  audio.play();
+}
+function openhat(){
+  var audio = new Audio('sounds/openhat.wav');
+  audio.play();
+}
+function ride(){
+  var audio = new Audio('sounds/ride.wav');
+  audio.play();
+}
+function snare(){
+  var audio = new Audio('sounds/snare.wav');
+  audio.play();
+}
+function tink(){
+  var audio = new Audio("sounds/tink.wav");
+  audio.play();
+}
+function tom(){
+  var audio = new Audio('sounds/tom.wav');
+  audio.play();
+}
 var recording = false;
 var record = document.querySelector("#record")
 record.addEventListener("click", function(){
@@ -86,7 +113,12 @@ record.addEventListener("click", function(){
     record.classList.add("btn-danger");
     record.innerHTML = "<h4>Stop Recording</h4>";
     recording = true;
-    
+
+    var mediaStream = document.querySelector("#audio1").captureStream();
+    var recorder = RecordRTC(mediaStream, {
+  type: 'audio'
+});
+
   } else {
     record.classList.add("btn-success");
     record.classList.remove("btn-danger");
