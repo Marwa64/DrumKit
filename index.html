@@ -13,7 +13,97 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>hello world </h1>
+  <div class="rippleBackground"></div>
+
+  <header class="jumbotron">
+    <div class="container">
+      <div class="row row-header">
+        <div class="col-12">
+          <h1 class="mt-5">Drum Kit</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container mb-3">
+    <div class="row">
+      <div class="col-9 col-sm-4 offset-2 offset-sm-4">
+        <button id="record" class="btn btn-block btn-success"><h4>Start Recording</h4></button>
+      </div>
+    </div>
+  </div>
+  <div class="container drum">
+    <div class="row row-content">
+      <div class="col-4 col-sm-3">
+        <button class="btn  btn-block" type="button" id="a" ontouchstart="clap()">
+          <span>A</span> <br>
+          <span class="key-name">CLAP</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="s" ontouchstart="hihat">
+          <span>S</span> <br>
+          <span class="key-name">HIHAT</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="d" ontouchstart="kick()">
+          <span>D</span> <br>
+          <span class="key-name">KICK</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="f" ontouchstart="openhat()">
+          <span>F</span> <br>
+          <span class="key-name">OPENHAT</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3 offset-sm-4">
+        <button class="btn btn-light btn-block ml-sm-5 mt-3 mb-3" type="button" id="g"  ontouchstart="boom()">
+          <span>G</span> <br>
+          <span class="key-name">BOOM</span>
+        </button>
+      </div>
+      <div class="offset-sm-3"></div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="h" ontouchstart="ride()">
+          <span>H</span> <br>
+          <span class="key-name">RIDE</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="j" ontouchstart="snare()">
+          <span>J</span> <br>
+          <span class="key-name">SNARE</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="k" ontouchstart="tom()">
+          <span>K</span> <br>
+          <span class="key-name">TOM</span>
+        </button>
+      </div>
+      <div class="col-4 col-sm-3">
+        <button class="btn btn-light btn-block" type="button" id="l" ontouchstart="tink()">
+          <span>L</span> <br>
+          <span class="key-name">TINK</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <audio id="audio1" data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="scripts.js"> </script>
 
 </body>
 </html>
