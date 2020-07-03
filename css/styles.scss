@@ -3,6 +3,7 @@ $very-lg-black: #00000020;
 $lg-orange: #fff1d9c2;
 $transparent: #00000000;
 $orange: #ffc600;
+$lg-green: #5bf351;
 
 @mixin box($topPad, $leftPad){
   padding: $topPad $leftPad $topPad $leftPad;
@@ -87,8 +88,8 @@ body{
   letter-spacing: .1rem;
   color: $orange;
 }
-#record{
-  margin-top: 70px;
+#rec{
+  margin-top: 65px;
   h4{
     font-family: 'Roboto Slab', serif;
   }
