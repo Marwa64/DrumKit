@@ -87,10 +87,35 @@ body{
   font-size: 15px;
   letter-spacing: .1rem;
   color: $orange;
+  text-transform: uppercase;
 }
-#rec{
+.buttons{
   margin-top: 65px;
-  h4{
-    font-family: 'Roboto Slab', serif;
+  #rec{
+    h4{
+      font-family: 'Roboto Slab', serif;
+    }
   }
+  #toggleSettings{
+    align-self: baseline;
+  }
+}
+a{
+  visibility: hidden;
+
+  .fa-cog{
+    color: $lg-green;
+    font-size: 25px;
+  }
+  .fa-cog:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    text-shadow: 0 0 .2rem white;
+  }
+}
+.modal-body{
+  padding: 20px 20px 20px 20px;
+}
+.margin-top{
+  margin-top: 10px;
 }

@@ -1,15 +1,17 @@
+var currentBtn = '';
+
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 
-const clap = document.querySelector('#clap');
-const hihat = document.querySelector('#hihat');
-const boom = document.querySelector('#boom');
-const kick = document.querySelector('#kick');
-const openhat = document.querySelector('#openhat');
-const ride = document.querySelector('#ride');
-const snare = document.querySelector('#snare');
-const tom = document.querySelector('#tom');
-const tink = document.querySelector('#tink');
+const clap = document.querySelector('#aAudio');
+const hihat = document.querySelector('#sAudio');
+const boom = document.querySelector('#gAudio');
+const kick = document.querySelector('#dAudio');
+const openhat = document.querySelector('#fAudio');
+const ride = document.querySelector('#hAudio');
+const snare = document.querySelector('#jAudio');
+const tom = document.querySelector('#kAudio');
+const tink = document.querySelector('#lAudio');
 
 var recordedChunks = [];
 const mediaStreamDestination = audioContext.createMediaStreamDestination();
@@ -65,42 +67,25 @@ function download() {
   window.URL.revokeObjectURL(url);
 }
 
-const gainNode1 = audioContext.createGain();
-const gainNode2 = audioContext.createGain();
-const gainNode3 = audioContext.createGain();
+track1.connect(mediaStreamDestination);
+track2.connect(mediaStreamDestination);
+track3.connect(mediaStreamDestination);
+track4.connect(mediaStreamDestination);
+track5.connect(mediaStreamDestination);
+track6.connect(mediaStreamDestination);
+track7.connect(mediaStreamDestination);
+track8.connect(mediaStreamDestination);
+track9.connect(mediaStreamDestination);
 
-track1.connect(gainNode1).connect(mediaStreamDestination);
-track2.connect(gainNode2).connect(mediaStreamDestination);
-track3.connect(gainNode3).connect(mediaStreamDestination);
-track4.connect(gainNode1).connect(mediaStreamDestination);
-track5.connect(gainNode2).connect(mediaStreamDestination);
-track6.connect(gainNode3).connect(mediaStreamDestination);
-track7.connect(gainNode1).connect(mediaStreamDestination);
-track8.connect(gainNode2).connect(mediaStreamDestination);
-track9.connect(gainNode3).connect(mediaStreamDestination);
-
-track1.connect(gainNode1).connect(audioContext.destination);
-track2.connect(gainNode2).connect(audioContext.destination);
-track3.connect(gainNode3).connect(audioContext.destination);
-track4.connect(gainNode1).connect(audioContext.destination);
-track5.connect(gainNode2).connect(audioContext.destination);
-track6.connect(gainNode3).connect(audioContext.destination);
-track7.connect(gainNode1).connect(audioContext.destination);
-track8.connect(gainNode2).connect(audioContext.destination);
-track9.connect(gainNode3).connect(audioContext.destination);
-
-/*const volumeClap = document.querySelector("#volumeClap");
-volumeClap.addEventListener('input', function(){
-  gainNode1.gain.value = this.value;
-});
-const volumeHithat = document.querySelector("#volumeHithat");
-volumeHithat.addEventListener('input', function(){
-  gainNode2.gain.value = this.value;
-});
-const volumeBoom = document.querySelector("#volumeBoom");
-volumeBoom.addEventListener('input', function(){
-  gainNode3.gain.value = this.value;
-});*/
+track1.connect(audioContext.destination);
+track2.connect(audioContext.destination);
+track3.connect(audioContext.destination);
+track4.connect(audioContext.destination);
+track5.connect(audioContext.destination);
+track6.connect(audioContext.destination);
+track7.connect(audioContext.destination);
+track8.connect(audioContext.destination);
+track9.connect(audioContext.destination);
 
 function playSound(audio){
  if (audioContext.state === 'suspended'){
@@ -113,7 +98,8 @@ function playSound(audio){
  audio.play();
 }
 
-document.addEventListener("keydown", function(){
+document.addEventListener("keydown", playKey);
+function playKey(){
   document.querySelector('.rippleBackground').classList.add("ripple");
   setTimeout(function(){document.querySelector('.rippleBackground').classList.remove("ripple");}, 1000);
   if(event.keyCode === 65){
@@ -152,9 +138,10 @@ document.addEventListener("keydown", function(){
     playSound(tink);
     document.getElementById("l").focus();
   }
-});
+}
 
-document.addEventListener("keyup", function(){
+document.addEventListener("keyup", stopPlaying);
+function stopPlaying(){
   if(event.keyCode === 65){
     document.getElementById("a").blur();
   }
@@ -182,4 +169,132 @@ document.addEventListener("keyup", function(){
   if(event.keyCode === 76){
     document.getElementById("l").blur();
   }
+}
+
+function saveSettings(){
+  closeModal();
+  if (currentBtn === 'a'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      document.querySelector("#btnA").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#aSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("aAudio").load();
+  }
+  if (currentBtn === 's'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      document.querySelector("#btnS").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#sSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("sAudio").load();
+  }
+  if (currentBtn === 'd'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      document.querySelector("#btnD").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#dSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("dAudio").load();
+  }
+  if (currentBtn === 'f'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      console.log(name);
+      document.querySelector("#btnF").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#fSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("fAudio").load();
+  }
+  if (currentBtn === 'g'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      console.log(name);
+      document.querySelector("#btnG").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#gSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("gAudio").load();
+  }
+  if (currentBtn === 'h'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      console.log(name);
+      document.querySelector("#btnH").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#hrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("hAudio").load();
+  }
+  if (currentBtn === 'j'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      console.log(name);
+      document.querySelector("#btnJ").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#jSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("jAudio").load();
+  }
+  if (currentBtn === 'k'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      console.log(name);
+      document.querySelector("#btnK").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#kSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("kAudio").load();
+  }
+  if (currentBtn === 'l'){
+    var name = document.querySelector("#name").value;
+    if (name != ""){
+      console.log(name);
+      document.querySelector("#btnL").innerHTML = name;
+    }
+    const selectedFile = document.getElementById('file').files[0];
+    console.log(selectedFile);
+    $("#lSrc").attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById("lAudio").load();
+  }
+}
+function setCurrentBtn(value){
+    currentBtn=value;
+    console.log(currentBtn);
+    document.removeEventListener("keydown", playKey);
+    document.removeEventListener("keyup", stopPlaying);
+}
+var toggleSettings = document.querySelector("#toggleSettings");
+toggleSettings.addEventListener('click', function(){
+  if (this.dataset.visible === 'false'){
+    var settings = document.querySelectorAll("a");
+    for (i = 0; i < settings.length; i++) {
+      settings[i].style.visibility = "visible";
+    }
+    this.dataset.visible = 'true';
+  } else {
+    var settings = document.querySelectorAll("a");
+    for (i = 0; i < settings.length; i++) {
+      settings[i].style.visibility = "hidden";
+    }
+    this.dataset.visible = 'false';
+  }
 });
+
+function closeModal(){
+  document.querySelector("#name").value = "";
+  document.addEventListener("keydown", playKey);
+  document.addEventListener("keyup", stopPlaying);
+}
