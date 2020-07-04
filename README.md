@@ -13,4 +13,4 @@ Live version: https://marwa64.github.io/DrumKit/dist/index.html <br>
 <h3>Screenshots</h3>
   <img src="screenshots/DrumKit1.jpg" width="750" height="600">
   <img src="screenshots/DrumKit2.jpg" width="750" height="600">
-  <img src="screenshots/DrumKit3.jpg" width="750" height="600">
+  <img src="screenshots/DrumKit3.jpg" width="750" height="600"> 
