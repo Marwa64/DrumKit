@@ -92,9 +92,7 @@ track9.connect(audioContext.destination);
 
 function playSound(audio){
  if (audioContext.state === 'suspended'){
-   audioContext.resume().then(() => {
-     console.log('playback resumed!');
-   });
+   audioContext.resume();
  }
  document.querySelector('.rippleBackground').classList.add("ripple");
  setTimeout(function(){document.querySelector('.rippleBackground').classList.remove("ripple");}, 1000);
@@ -236,7 +234,7 @@ toggleSettings.addEventListener('click', function(){
 });
 
 function saveAudio(btnID, srcID, audioID){
-  let name = document.querySelector("#name").value;
+  var name = document.querySelector("#name").value;
   if (name != ""){
     document.querySelector(btnID).innerHTML = name;
   }

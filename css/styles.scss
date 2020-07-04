@@ -111,11 +111,9 @@ body{
 @keyframes fadein{
   from{
     opacity: 0;
-    transition: scale(0);
   }
   to{
     opacity: 1;
-    transition: scale(1);
   }
 }
 .fade-out{
@@ -129,11 +127,9 @@ body{
 @keyframes fadeout{
   from{
     opacity: 1;
-    transition: scale(1);
   }
   to{
     opacity: 0;
-    transition: scale(0);
   }
 }
 a{
