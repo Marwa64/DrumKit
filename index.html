@@ -30,7 +30,7 @@
                   <label for="sound">Upload custom sound:</label>
                 </div>
                 <div class="col-6">
-                  <input id="file" type="file" name="sound" value="">
+                  <input id="file" type="file" name="sound" accept="audio/*">
                 </div>
               </div>
               <div class="form-group form-row mt-4">
@@ -70,7 +70,7 @@
       <button id="rec" data-recording='false' class="btn btn-block btn-success"><h4>Start Recording</h4></button>
     </div>
     <div class="col-2 offset-sm-2 col-sm-1 align-self-center">
-      <button data-visibile='false' id="toggleSettings" class="btn btn-secondary ml-sm-3" name="button">Settings</button>
+      <button id="toggleSettings" class="btn btn-secondary ml-sm-3" name="button">Settings</button>
     </div>
   </div>
 
@@ -78,65 +78,65 @@
   <div class="container drum">
     <div class="row row-content">
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('a')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-block col-12" type="button" id="a" ontouchstart="playSound(clap)">
+        <a type="button" onclick="setCurrentBtn('a')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-block col-12" type="button" id="a" onclick="playSound(clap)">
           <span>A</span> <br>
           <span id="btnA" class="key-name">CLAP</span>
         </button>
       </div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('s')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="s" ontouchstart="playSound(hihat)">
+        <a type="button" onclick="setCurrentBtn('s')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="s" onclick="playSound(hihat)">
           <span>S</span> <br>
           <span id="btnS" class="key-name">HIHAT</span>
         </button>
       </div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('d')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="d" ontouchstart="playSound(kick)">
+        <a type="button" onclick="setCurrentBtn('d')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="d" onclick="playSound(kick)">
           <span>D</span> <br>
           <span id="btnD" class="key-name">KICK</span>
         </button>
       </div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('f')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="f" ontouchstart="playSound(openhat)">
+        <a type="button" onclick="setCurrentBtn('f')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="f" onclick="playSound(openhat)">
           <span>F</span> <br>
           <span id="btnF" class="key-name">OPENHAT</span>
         </button>
       </div>
       <div class="col-4 col-sm-3 offset-sm-4">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('g')" class="col-2 offset-4 offset-sm-7 mr-1"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block ml-sm-5 mt-3 mb-3" type="button" id="g"  ontouchstart="playSound(boom)">
+        <a type="button" onclick="setCurrentBtn('g')" class="col-2 offset-4 offset-sm-7 mr-1 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block ml-sm-5 mt-3 mb-3" type="button" id="g"  onclick="playSound(boom)">
           <span>G</span> <br>
           <span id="btnG" class="key-name">BOOM</span>
         </button>
       </div>
       <div class="offset-sm-3"></div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('h')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="h" ontouchstart="playSound(ride)">
+        <a type="button" onclick="setCurrentBtn('h')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="h" onclick="playSound(ride)">
           <span>H</span> <br>
           <span id="btnH" class="key-name">RIDE</span>
         </button>
       </div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('j')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="j" ontouchstart="playSound(snare)">
+        <a type="button" onclick="setCurrentBtn('j')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="j" onclick="playSound(snare)">
           <span>J</span> <br>
           <span id="btnJ" class="key-name">SNARE</span>
         </button>
       </div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('k')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="k" ontouchstart="playSound(tom)">
+        <a type="button" onclick="setCurrentBtn('k')" class="col-2 offset-4 offset-sm-5 fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="k" onclick="playSound(tom)">
           <span>K</span> <br>
           <span id="btnK" class="key-name">TOM</span>
         </button>
       </div>
       <div class="col-4 col-sm-3">
-        <a type="button" data-toggle="modal" data-target="#settingsModal" onclick="setCurrentBtn('l')" class="col-2 offset-4 offset-sm-5"><span class="fa fa-cog"></span></a>
-        <button class="btn btn-light btn-block" type="button" id="l" ontouchstart="playSound(tink)">
+        <a type="button" onclick="setCurrentBtn('l')" class="col-2 offset-4 offset-sm-5  fade-out"><span class="fa fa-cog"></span></a>
+        <button class="btn btn-light btn-block" type="button" id="l" onclick="playSound(tink)">
           <span>L</span> <br>
           <span id="btnL" class="key-name">TINK</span>
         </button>

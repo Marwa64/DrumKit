@@ -1,4 +1,5 @@
 var currentBtn = '';
+var cogVisible = 'false';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
@@ -55,7 +56,7 @@ function handleDataAvailable(event) {
 }
 function download() {
   var blob = new Blob(recordedChunks, {
-    type: "video/webm"
+    type: "audio/webm"
   });
   var url = URL.createObjectURL(blob);
   var a = document.createElement("a");
@@ -67,6 +68,7 @@ function download() {
   window.URL.revokeObjectURL(url);
 }
 
+// To record the sounds
 track1.connect(mediaStreamDestination);
 track2.connect(mediaStreamDestination);
 track3.connect(mediaStreamDestination);
@@ -77,6 +79,7 @@ track7.connect(mediaStreamDestination);
 track8.connect(mediaStreamDestination);
 track9.connect(mediaStreamDestination);
 
+// So the user can hear the sounds
 track1.connect(audioContext.destination);
 track2.connect(audioContext.destination);
 track3.connect(audioContext.destination);
@@ -93,6 +96,8 @@ function playSound(audio){
      console.log('playback resumed!');
    });
  }
+ document.querySelector('.rippleBackground').classList.add("ripple");
+ setTimeout(function(){document.querySelector('.rippleBackground').classList.remove("ripple");}, 1000);
  audio.pause();
  audio.currentTime = 0;
  audio.play();
@@ -100,8 +105,6 @@ function playSound(audio){
 
 document.addEventListener("keydown", playKey);
 function playKey(){
-  document.querySelector('.rippleBackground').classList.add("ripple");
-  setTimeout(function(){document.querySelector('.rippleBackground').classList.remove("ripple");}, 1000);
   if(event.keyCode === 65){
     playSound(clap);
     document.getElementById("a").focus();
@@ -172,126 +175,79 @@ function stopPlaying(){
 }
 
 function saveSettings(){
-  closeModal();
   if (currentBtn === 'a'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      document.querySelector("#btnA").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#aSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("aAudio").load();
+    saveAudio("#btnA", "#aSrc", "aAudio");
   }
   if (currentBtn === 's'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      document.querySelector("#btnS").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#sSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("sAudio").load();
+    saveAudio("#btnS", "#sSrc", "sAudio");
   }
   if (currentBtn === 'd'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      document.querySelector("#btnD").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#dSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("dAudio").load();
+    saveAudio("#btnD", "#dSrc", "dAudio");
   }
   if (currentBtn === 'f'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      console.log(name);
-      document.querySelector("#btnF").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#fSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("fAudio").load();
+    saveAudio("#btnF", "#fSrc", "fAudio");
   }
   if (currentBtn === 'g'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      console.log(name);
-      document.querySelector("#btnG").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#gSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("gAudio").load();
+    saveAudio("#btnG", "#gSrc", "gAudio");
   }
   if (currentBtn === 'h'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      console.log(name);
-      document.querySelector("#btnH").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#hrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("hAudio").load();
+    saveAudio("#btnH", "#hSrc", "hAudio");
   }
   if (currentBtn === 'j'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      console.log(name);
-      document.querySelector("#btnJ").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#jSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("jAudio").load();
+    saveAudio("#btnJ", "#jSrc", "jAudio");
   }
   if (currentBtn === 'k'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      console.log(name);
-      document.querySelector("#btnK").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#kSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("kAudio").load();
+    saveAudio("#btnK", "#kSrc", "kAudio");
   }
   if (currentBtn === 'l'){
-    var name = document.querySelector("#name").value;
-    if (name != ""){
-      console.log(name);
-      document.querySelector("#btnL").innerHTML = name;
-    }
-    const selectedFile = document.getElementById('file').files[0];
-    console.log(selectedFile);
-    $("#lSrc").attr("src", URL.createObjectURL(selectedFile));
-    document.getElementById("lAudio").load();
+    saveAudio("#btnL", "#lSrc", "lAudio");
   }
+  closeModal();
 }
 function setCurrentBtn(value){
+  if (cogVisible === 'true'){
+    console.log(cogVisible);
     currentBtn=value;
     console.log(currentBtn);
     document.removeEventListener("keydown", playKey);
     document.removeEventListener("keyup", stopPlaying);
+    $("#settingsModal").modal("show");
+  } else {
+    console.log(cogVisible)
+  }
 }
 var toggleSettings = document.querySelector("#toggleSettings");
 toggleSettings.addEventListener('click', function(){
-  if (this.dataset.visible === 'false'){
+  if (cogVisible === 'false'){
+    cogVisible = 'true';
     var settings = document.querySelectorAll("a");
     for (i = 0; i < settings.length; i++) {
-      settings[i].style.visibility = "visible";
+      settings[i].classList.remove("fade-out");
+      settings[i].classList.add("fade-in");
     }
-    this.dataset.visible = 'true';
   } else {
+    cogVisible = 'false';
     var settings = document.querySelectorAll("a");
     for (i = 0; i < settings.length; i++) {
-      settings[i].style.visibility = "hidden";
+      settings[i].classList.remove("fade-in");
+      settings[i].classList.add("fade-out");
     }
-    this.dataset.visible = 'false';
   }
 });
+
+function saveAudio(btnID, srcID, audioID){
+  let name = document.querySelector("#name").value;
+  if (name != ""){
+    document.querySelector(btnID).innerHTML = name;
+  }
+  try{
+    const selectedFile = document.getElementById('file').files[0];
+    $(srcID).attr("src", URL.createObjectURL(selectedFile));
+    document.getElementById(audioID).load();
+  } catch(error){
+    console.log("No file uploaded");
+  }
+}
 
 function closeModal(){
   document.querySelector("#name").value = "";
